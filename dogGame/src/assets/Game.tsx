@@ -10,7 +10,6 @@ export function Game() {
     const [dogs, setDogs] = useState<Dog[]>([]);
     const [counter, setCounter] = useState(0);
     const screenHeight = window.innerHeight - 60;
-    const screenWidth = window.innerWidth - 60;
 
     function runDog(e: React.MouseEvent) {
         const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
