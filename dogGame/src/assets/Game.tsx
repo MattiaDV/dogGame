@@ -1,5 +1,7 @@
 import { CreateDog } from "./cagnolino";
 import { useEffect, useState } from "react";
+import { CreateClouds } from "./CreateNuvole";
+import { CreateMelo } from "./CreateMelo";
 
 type Dog = {
     x: number;
@@ -10,6 +12,16 @@ export function Game() {
     const [dogs, setDogs] = useState<Dog[]>([]);
     const [counter, setCounter] = useState(0);
     const screenHeight = window.innerHeight - 60;
+    const [cloud, setCloud] = useState<number[]>([]);
+
+    useEffect(() => {
+        let arr = [];
+        for (let i = 0; i < 4; i++) {
+            arr.push(i);
+        }
+
+        setCloud(arr);
+    })
 
     function runDog(e: React.MouseEvent) {
         const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
@@ -49,6 +61,16 @@ export function Game() {
                         )
                     })
                 }
+            </div>
+            <div className="fixed top-[50px] left-0 w-full flex-wrap flex justify-center gap-[5px] z-[-999]">
+                {
+                    cloud.map(() => (
+                        <CreateClouds />
+                    ))
+                }
+            </div>
+            <div className="fixed bottom-[-20px] z-[-998]">
+                <CreateMelo />
             </div>
             <div className="fixed top-[20px] left-[20px]">Cagnolini: {counter}</div>
             <button onClick={restartDog} className="fixed top-[20px] right-[20px] p-[10px] bg-[var(--bg-btn)] border border-[var(--bg-btn)] rounded-[10px] text-[var(--text)]">Riavvia</button>

@@ -9,7 +9,7 @@ export function CreateDog({x, y}: Props) {
     return (
         <>
             <img 
-                className="w-[50px] h-[50px] absolute"
+                className="w-[100px] h-[100px] absolute"
                 style={{
                     left: x,
                     top: y,
