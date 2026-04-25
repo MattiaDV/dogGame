@@ -2,4 +2,9 @@
     --bg: #28ad00;
     --bg-btn: #181818;
     --text: #ececec;
+    --sky: #00e1ff;
+}
+
+body {
+    background: var(--sky);
 }
