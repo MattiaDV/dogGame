@@ -14,9 +14,8 @@ export function Game() {
     const screenHeight = window.innerHeight - 60;
     const [cloud, setCloud] = useState<number[]>([]);
 
-    /*
     useEffect(() => {
-        fetch("/netlify/functions/data", {
+        fetch("/.netlify/functions/data", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({
@@ -32,7 +31,6 @@ export function Game() {
             })
         })
     }, []);
-    */
 
     useEffect(() => {
         let arr = [];
