@@ -14,21 +14,23 @@ export function Game() {
     const screenHeight = window.innerHeight - 60;
     const [cloud, setCloud] = useState<number[]>([]);
 
-    fetch("7.netlify/functions/data", {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({
-            event: "dog_spawn",
-            client: {
-                userAgent: navigator.userAgent,
-                language: navigator.language,
-                platform: navigator.platform,
-                width: window.innerWidth,
-                height: window.innerHeight,
-                time: new Date().toISOString()
-            }
+    useEffect(() => {
+        fetch("7.netlify/functions/data", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+                event: "dog_spawn",
+                client: {
+                    userAgent: navigator.userAgent,
+                    language: navigator.language,
+                    platform: navigator.platform,
+                    width: window.innerWidth,
+                    height: window.innerHeight,
+                    time: new Date().toISOString()
+                }
+            })
         })
-    })
+    }, []);
 
     useEffect(() => {
         let arr = [];
@@ -37,7 +39,7 @@ export function Game() {
         }
 
         setCloud(arr);
-    })
+    }, []);
 
     function runDog(e: React.MouseEvent) {
         const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
